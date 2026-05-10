@@ -5,6 +5,7 @@ import {
   getPoemPath,
   getPoemsByCategory,
 } from "../../../lib/poems";
+import { mediaPath } from "../../../lib/paths";
 
 export function getStaticPaths() {
   return categories.map((category) => ({
@@ -23,7 +24,7 @@ const categoryPoems = getPoemsByCategory(category.slug);
 >
   <section
     class="page-hero category-hero"
-    style={category.image ? `background-image: url('${category.image}')` : ""}
+    style={category.image ? `background-image: url('${mediaPath(category.image)}')` : ""}
   >
     <h1>{category.title}</h1>
     <p>{category.description}</p>
@@ -33,7 +34,7 @@ const categoryPoems = getPoemsByCategory(category.slug);
     {
       categoryPoems.map((poem) => (
         <a class="poem-card" href={getPoemPath(poem)}>
-          <img src={poem.image} alt="" loading="lazy" />
+          <img src={mediaPath(poem.image)} alt="" loading="lazy" />
           <div>
             <h3>{poem.title}</h3>
             <p>{poem.summary}</p>

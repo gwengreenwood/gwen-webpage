@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import { categories, getCategoryPath, getPoemPath, poems } from "../../lib/poems";
+import { mediaPath, sitePath } from "../../lib/paths";
 ---
 
 <SiteLayout title="Poems | Gwen" description="Browse Gwen's poems.">
@@ -14,13 +15,13 @@ import { categories, getCategoryPath, getPoemPath, poems } from "../../lib/poems
   <section class="section dark">
     <div class="section-header">
       <h2>Categories</h2>
-      <a class="text-link" href="/admin/">Edit categories →</a>
+      <a class="text-link" href={sitePath("/admin/")}>Edit categories →</a>
     </div>
     <div class="category-grid" aria-label="Poem categories">
       {
         categories.map((category) => (
           <a class="category-card" href={getCategoryPath(category)}>
-            {category.image && <img src={category.image} alt="" loading="lazy" />}
+            {category.image && <img src={mediaPath(category.image)} alt="" loading="lazy" />}
             <div>
               <h3>{category.title}</h3>
               <p>{category.description}</p>
@@ -37,7 +38,7 @@ import { categories, getCategoryPath, getPoemPath, poems } from "../../lib/poems
     {
       poems.map((poem) => (
         <a class="poem-card vertical" href={getPoemPath(poem)}>
-          <img src={poem.image} alt="" loading="lazy" />
+          <img src={mediaPath(poem.image)} alt="" loading="lazy" />
           <div class="poem-card-body">
             <h3>{poem.title}</h3>
             <p>{poem.summary}</p>

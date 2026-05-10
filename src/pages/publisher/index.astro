@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro";
+import { sitePath } from "../../lib/paths";
 
 const template = `---
 title: "Your Poem Title"
@@ -40,7 +41,7 @@ add two spaces at the end of the previous line.`;
         screen, then a form-based editor for adding and changing poems.
       </p>
       <p>
-        <a class="button" href="/admin/">Open admin <span aria-hidden="true">→</span></a>
+        <a class="button" href={sitePath("/admin/")}>Open admin <span aria-hidden="true">→</span></a>
       </p>
     </div>
 

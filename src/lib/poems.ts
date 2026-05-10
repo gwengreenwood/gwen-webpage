@@ -1,3 +1,5 @@
+import { sitePath } from "./paths";
+
 type MarkdownModule = {
   frontmatter: PoemFrontmatter;
   Content: any;
@@ -123,11 +125,11 @@ export function getPoemsByCategory(categorySlug: string): Poem[] {
 }
 
 export function getPoemPath(poem: Pick<Poem, "category" | "slug">): string {
-  return `/poems/${poem.category}/${poem.slug}/`;
+  return sitePath(`/poems/${poem.category}/${poem.slug}/`);
 }
 
 export function getCategoryPath(category: Pick<Category, "slug">): string {
-  return `/poems/${category.slug}/`;
+  return sitePath(`/poems/${category.slug}/`);
 }
 
 export function getAdjacentPoems(slug: string, categorySlug?: string): {

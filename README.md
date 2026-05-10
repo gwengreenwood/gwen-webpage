@@ -80,6 +80,21 @@ a private password or save poem files by itself. The admin screen is on your
 website, but it still needs permission to save changes back into the website
 repository in the background.
 
+## Keep admin edits safe
+
+When you add poems, categories, images, or music through `/admin/`, those changes
+are saved directly to GitHub.
+
+Before making design/code changes from this computer, pull the latest GitHub
+version first:
+
+```bash
+git pull --rebase origin main
+```
+
+That keeps new admin-added poems from being overwritten by an older copy on this
+computer.
+
 ## Publish to GitHub Pages
 
 1. Create a GitHub repository.
@@ -94,13 +109,38 @@ automatically rebuild and update the hosted website.
 
 ## Use your own domain
 
-1. In GitHub repo settings, go to **Pages**.
-2. Enter your domain under **Custom domain**.
-3. Follow GitHub's DNS instructions for your domain host.
-4. Turn on **Enforce HTTPS** after GitHub says the domain is ready.
+The site is set up for:
 
-If you want the sitemap to use your real domain, set a repository variable named
-`SITE_URL` to your domain, such as `https://example.com`.
+```text
+gwenevereivygreenwood.com
+```
+
+The file `public/CNAME` tells GitHub Pages to use that domain.
+
+In your domain host's DNS settings, point the domain to GitHub Pages. For an
+apex/root domain like this, GitHub's current IPv4 `A` records are:
+
+```text
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+```
+
+You can also add these IPv6 `AAAA` records if your domain host supports them:
+
+```text
+2606:50c0:8000::153
+2606:50c0:8001::153
+2606:50c0:8002::153
+2606:50c0:8003::153
+```
+
+After DNS is pointed correctly, GitHub can issue the HTTPS certificate. That may
+take a little while.
+
+If you want the sitemap to use a different domain later, update the repository
+variable named `SITE_URL`.
 
 There is also a sample file at `public/CNAME.example`. When you know the real
 domain, rename it to `CNAME` and replace `your-domain.com` with your domain.
