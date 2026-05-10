@@ -1,0 +1,54 @@
+---
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+import {
+  categories,
+  getPoemPath,
+  getPoemsByCategory,
+} from "../../../lib/poems";
+
+export function getStaticPaths() {
+  return categories.map((category) => ({
+    params: { category: category.slug },
+    props: { category },
+  }));
+}
+
+const { category } = Astro.props;
+const categoryPoems = getPoemsByCategory(category.slug);
+---
+
+<SiteLayout
+  title={`${category.title} Poems | Gwen`}
+  description={category.description}
+>
+  <section
+    class="page-hero category-hero"
+    style={category.image ? `background-image: url('${category.image}')` : ""}
+  >
+    <h1>{category.title}</h1>
+    <p>{category.description}</p>
+  </section>
+  <section class="section dark" aria-label={`${category.title} poems`}>
+    <div class="poem-grid">
+    {
+      categoryPoems.map((poem) => (
+        <a class="poem-card" href={getPoemPath(poem)}>
+          <img src={poem.image} alt="" loading="lazy" />
+          <div>
+            <h3>{poem.title}</h3>
+            <p>{poem.summary}</p>
+            <p class="meta">{poem.dateLabel}</p>
+            {poem.tags && (
+              <div class="tags" aria-label="Tags">
+                {poem.tags.map((tag) => (
+                  <span>{tag}</span>
+                ))}
+              </div>
+            )}
+          </div>
+        </a>
+      ))
+    }
+    </div>
+  </section>
+</SiteLayout>

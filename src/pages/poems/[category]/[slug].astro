@@ -1,0 +1,58 @@
+---
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+import {
+  categories,
+  getAdjacentPoems,
+  getPoemPath,
+} from "../../../lib/poems";
+
+export function getStaticPaths() {
+  return categories.flatMap((category) =>
+    category.poems.map((poem) => ({
+      params: { category: category.slug, slug: poem.slug },
+      props: { category, poem },
+    })),
+  );
+}
+
+const { category, poem } = Astro.props;
+const { previous, next } = getAdjacentPoems(poem.slug, category.slug);
+const Content = poem.Content;
+---
+
+<SiteLayout
+  title={`${poem.title} | Gwen`}
+  description={poem.summary}
+  bodyClass="reader-body"
+>
+  <article class="reader" style={`background-image: url('${poem.image}')`}>
+    <div class="reader-shell">
+      <header class="reader-title">
+        <p class="meta">{category.title} · {poem.dateLabel}</p>
+        <h1>{poem.title}</h1>
+        <p>{poem.summary}</p>
+        <div class="reader-nav">
+          <a class="button secondary" href={`/poems/${category.slug}/`}>Category</a>
+          <a class="button secondary" href="/poems/">All poems</a>
+          {previous && <a class="button secondary" href={getPoemPath(previous)}>Newer</a>}
+          {next && <a class="button secondary" href={getPoemPath(next)}>Older</a>}
+        </div>
+      </header>
+
+      <div class="reader-panel" aria-label={`${poem.title} poem text`}>
+        <div class="reader-panel-inner poem-body">
+          <Content />
+        </div>
+        {
+          poem.music && (
+            <div class="audio-dock">
+              <audio controls src={poem.music} preload="metadata">
+                <a href={poem.music}>Download audio</a>
+              </audio>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </article>
+</SiteLayout>
