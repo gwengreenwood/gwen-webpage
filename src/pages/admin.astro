@@ -20,5 +20,46 @@
       data-cfasync="false"
       src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"
     ></script>
+    <script is:inline>
+      (() => {
+        const noteId = "github-pages-token-note";
+        const noteText =
+          'This site is hosted on GitHub Pages. Use "Sign In Using Access Token". The plain GitHub sign-in button needs a separate auth server.';
+
+        function updateLoginScreen() {
+          const getButtonText = (button) =>
+            (button.textContent ?? "").replace(/[\u200e\u200f\u2066-\u2069]/g, "").trim();
+          const buttons = Array.from(document.querySelectorAll("button"));
+          const oauthButton = buttons.find((button) =>
+            /^sign in with\s+github$/i.test(getButtonText(button)),
+          );
+          const tokenButton = buttons.find((button) =>
+            /^sign in (using|with) (access )?token$/i.test(getButtonText(button)),
+          );
+
+          if (oauthButton) {
+            oauthButton.remove();
+          }
+
+          if (tokenButton && !document.getElementById(noteId)) {
+            const note = document.createElement("p");
+            note.id = noteId;
+            note.textContent = noteText;
+            note.style.maxWidth = "36rem";
+            note.style.margin = "0.85rem auto";
+            note.style.color = "#cbd5e1";
+            note.style.fontSize = "0.95rem";
+            note.style.lineHeight = "1.5";
+            note.style.textAlign = "center";
+            tokenButton.insertAdjacentElement("beforebegin", note);
+          }
+        }
+
+        const observer = new MutationObserver(updateLoginScreen);
+        observer.observe(document.documentElement, { childList: true, subtree: true });
+        window.addEventListener("load", updateLoginScreen);
+        updateLoginScreen();
+      })();
+    </script>
   </body>
 </html>
