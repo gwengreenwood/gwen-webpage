@@ -245,6 +245,16 @@ function textValue(data: SettingsData, key: keyof SettingsData, fallback: string
   return hasText(value) ? value : fallback;
 }
 
+function optionalTextValue(data: SettingsData, key: keyof SettingsData, fallback: string): string {
+  if (Object.prototype.hasOwnProperty.call(data, key)) {
+    const value = data[key];
+
+    return typeof value === "string" ? value : "";
+  }
+
+  return fallback;
+}
+
 function colorValue(value: unknown, fallback: string): string {
   if (hasText(value) && /^#[0-9a-fA-F]{3,8}$/.test(value)) {
     return value;
@@ -322,17 +332,17 @@ export async function getPageSettings(pageId: PageId): Promise<PageSettings> {
     ),
     label: textValue(data, "label", fallback.label),
     heading: textValue(data, "heading", fallback.heading),
-    introText: textValue(data, "introText", fallback.introText),
-    bodyText: textValue(data, "bodyText", fallback.bodyText),
+    introText: optionalTextValue(data, "introText", fallback.introText),
+    bodyText: optionalTextValue(data, "bodyText", fallback.bodyText),
     primaryButtonLabel: textValue(data, "primaryButtonLabel", fallback.primaryButtonLabel),
     primaryButtonUrl: textValue(data, "primaryButtonUrl", fallback.primaryButtonUrl),
     secondaryButtonLabel: textValue(data, "secondaryButtonLabel", fallback.secondaryButtonLabel),
     secondaryButtonUrl: textValue(data, "secondaryButtonUrl", fallback.secondaryButtonUrl),
     images: imageListValue(data.images, fallback.images),
-    websiteEditorText: textValue(data, "websiteEditorText", fallback.websiteEditorText),
-    foldersText: textValue(data, "foldersText", fallback.foldersText),
-    templateIntro: textValue(data, "templateIntro", fallback.templateIntro),
-    publishFlowIntro: textValue(data, "publishFlowIntro", fallback.publishFlowIntro),
+    websiteEditorText: optionalTextValue(data, "websiteEditorText", fallback.websiteEditorText),
+    foldersText: optionalTextValue(data, "foldersText", fallback.foldersText),
+    templateIntro: optionalTextValue(data, "templateIntro", fallback.templateIntro),
+    publishFlowIntro: optionalTextValue(data, "publishFlowIntro", fallback.publishFlowIntro),
   };
 }
 

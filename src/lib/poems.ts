@@ -15,8 +15,6 @@ export type PoemFrontmatter = {
   image?: string;
   music?: string;
   tags?: string[];
-  featured?: boolean;
-  draft?: boolean;
 };
 
 export type Poem = PoemFrontmatter & {
@@ -28,7 +26,6 @@ export type CategoryFrontmatter = {
   title: string;
   image?: string;
   order?: number | null;
-  draft?: boolean;
 };
 
 export type Category = CategoryFrontmatter & {
@@ -57,7 +54,6 @@ export const poems: Poem[] = Object.entries(poemModules)
       Content: module.Content,
     };
   })
-  .filter((poem) => !poem.draft)
   .sort((a, b) => a.title.localeCompare(b.title));
 
 export const categories: Category[] = Object.entries(categoryModules)
@@ -70,7 +66,6 @@ export const categories: Category[] = Object.entries(categoryModules)
       poems: poems.filter((poem) => poem.category === slug),
     };
   })
-  .filter((category) => !category.draft)
   .sort((a, b) => {
     const orderA = a.order ?? 999;
     const orderB = b.order ?? 999;
@@ -85,8 +80,6 @@ export const categories: Category[] = Object.entries(categoryModules)
 export const categoryMap = new Map(
   categories.map((category) => [category.slug, category]),
 );
-
-export const featuredPoems = poems.filter((poem) => poem.featured).slice(0, 3);
 
 export function getPoemBySlug(slug: string): Poem | undefined {
   return poems.find((poem) => poem.slug === slug);

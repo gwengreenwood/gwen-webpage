@@ -8,8 +8,6 @@ const poems = defineCollection({
     image: z.string().optional(),
     music: z.string().optional(),
     tags: z.array(z.string()).optional(),
-    featured: z.boolean().optional(),
-    draft: z.boolean().optional(),
   }),
 });
 
@@ -19,7 +17,6 @@ const categories = defineCollection({
     title: z.string(),
     image: z.string().optional(),
     order: z.number().nullable().optional(),
-    draft: z.boolean().optional(),
   }),
 });
 

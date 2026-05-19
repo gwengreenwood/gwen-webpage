@@ -45,8 +45,8 @@ const style = [
       <div class="editable-page-copy">
         {settings.label && <p class="quiet-label">{settings.label}</p>}
         <h1 id={titleId}>{settings.heading}</h1>
-        {settings.introText && <p>{settings.introText}</p>}
-        {settings.bodyText && <p>{settings.bodyText}</p>}
+        {settings.introText && <p class="formatted-text">{settings.introText}</p>}
+        {settings.bodyText && <p class="formatted-text">{settings.bodyText}</p>}
 
         {
           (settings.primaryButtonLabel || settings.secondaryButtonLabel) && (
