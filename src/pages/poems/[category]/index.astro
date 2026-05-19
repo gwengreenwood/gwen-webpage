@@ -20,14 +20,13 @@ const categoryPoems = getPoemsByCategory(category.slug);
 
 <SiteLayout
   title={`${category.title} Poems | Gwen`}
-  description={category.description}
+  description={`${category.title} poems by Gwenevere Ivy Greenwood.`}
 >
   <section
     class="page-hero category-hero"
     style={category.image ? `background-image: url('${mediaPath(category.image)}')` : ""}
   >
     <h1>{category.title}</h1>
-    <p>{category.description}</p>
   </section>
   <section class="section dark" aria-label={`${category.title} poems`}>
     <div class="poem-grid">

@@ -19,11 +19,17 @@ const categories = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    description: z.string(),
     image: z.string().optional(),
-    order: z.number().optional(),
+    order: z.number().nullable().optional(),
     draft: z.boolean().optional(),
   }),
 });
 
-export const collections = { poems, categories };
+const settings = defineCollection({
+  type: "content",
+  schema: z.object({
+    homeImage: z.string().optional(),
+  }),
+});
+
+export const collections = { poems, categories, settings };

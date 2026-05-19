@@ -1,8 +1,10 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import { getEntry } from "astro:content";
 import { mediaPath, sitePath } from "../lib/paths";
 
-const homeBackground = "/media/images/writing-desk-hero.png";
+const homeSettings = await getEntry("settings", "home");
+const homeBackground = homeSettings?.data.homeImage || "/media/images/writing-desk-hero.png";
 const portraitImage = "/media/images/still-life-roses.png";
 ---
 

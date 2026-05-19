@@ -30,9 +30,8 @@ export type Poem = PoemFrontmatter & {
 
 export type CategoryFrontmatter = {
   title: string;
-  description: string;
   image?: string;
-  order?: number;
+  order?: number | null;
   draft?: boolean;
 };
 
