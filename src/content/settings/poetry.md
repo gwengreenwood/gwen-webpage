@@ -8,7 +8,7 @@ embeddedImageAlt: A notebook near the shoreline
 embeddedImagePosition: right
 textBoxWidth: standard
 textBoxStyle: glass
-label: Poetry
+label: ''
 heading: poetry collections
 introText: ''
 bodyText: ''
