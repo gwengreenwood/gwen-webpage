@@ -1,22 +1,22 @@
 ---
 backgroundType: image
 backgroundColor: '#07110f'
-backgroundImage: /media/02.26.2021_17394474.jpg
+backgroundImage: /media/04.16.2015_18165594_001.JPG
 backgroundPosition: center
-embeddedImage: /media/images/writing-desk-hero.png
-embeddedImageAlt: A writing desk
+embeddedImage: /media/02.26.2021_17394474.jpg
+embeddedImageAlt: ''
 embeddedImagePosition: right
 textBoxWidth: standard
 textBoxStyle: glass
-label: Artwork
-heading: A visual archive in progress.
+label: ''
+heading: Artwork
 introText: ''
 bodyText: ''
 images:
-  - image: /media/04.16.2015_18165594_001.JPG
-    alt: Rain on a window
-  - image: /media/02.26.2021_17392648.jpg
-    alt: A notebook near the shoreline
+  - image: /media/04.16.2015_18214068_001.JPG
+    alt: ''
   - image: /media/04.20.2023_162525.JPG
-    alt: A writing desk
+    alt: ''
+  - image: /media/04.16.2015_18145076_001.JPG
+    alt: ''
 ---
