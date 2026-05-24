@@ -2,7 +2,7 @@
 backgroundType: image
 backgroundColor: '#07110f'
 backgroundImage: /media/09.03.2020_17415003.JPG
-backgroundBrightness: null
+backgroundBrightness: 100
 backgroundPosition: center
 embeddedImage: /media/03.31.2013_005.jpg
 embeddedImageBrightness: null
