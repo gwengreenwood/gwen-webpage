@@ -1,7 +1,9 @@
 ---
 title: plastic wrap
 category: hourglass-memories
-image: ''
+image: /media/dp 26.jpg
+imageBrightness: null
+textColor: ''
 music: ''
 tags: []
 ---
