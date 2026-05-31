@@ -1,11 +1,13 @@
 ---
 title: cool mauve
 category: dream-catcher
-image: ''
+image: /media/A8 genesis.jpg
+imageBrightness: null
+textColor: '#faf9f9'
 music: ''
 tags: []
-featured: false
 draft: false
+featured: false
 ---
 
 so soft
