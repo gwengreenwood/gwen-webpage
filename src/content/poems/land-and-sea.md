@@ -36,7 +36,7 @@ the people escape
 through the hole in the wall
 
 and I will see
-the moon tonight
+the moon up high
 eclipse the sun
 that burns so bright
 
