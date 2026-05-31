@@ -21,4 +21,7 @@ images:
   - image: /media/04.16.2015_18165594_001.JPG
     brightness: 100
     alt: ''
+  - image: /media/4 best.JPG
+    brightness: 100
+    alt: ''
 ---
