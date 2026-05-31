@@ -1,11 +1,13 @@
 ---
 title: fruit
 category: dream-catcher
-image: ''
+image: /media/A9 earth_s conception.jpg
+imageBrightness: 50
+textColor: '#fefbfb'
 music: ''
 tags: []
-featured: false
 draft: false
+featured: false
 ---
 
 another life
