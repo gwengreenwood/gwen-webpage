@@ -1,11 +1,13 @@
 ---
 title: land and sea
 category: nebula-orion
-image: ''
+image: /media/508 5.jpg
+imageBrightness: null
+textColor: '#fafafa'
 music: ''
 tags: []
-featured: false
 draft: false
+featured: false
 ---
 
 one is mad
