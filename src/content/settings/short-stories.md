@@ -2,10 +2,12 @@
 backgroundType: image
 backgroundColor: '#07110f'
 backgroundImage: /media/4x6 5.JPG
+backgroundBrightness: null
 backgroundPosition: center
-embeddedImage: /media/images/rain-window.png
-embeddedImageAlt: Rain on a window
-embeddedImagePosition: left
+embeddedImage: ''
+embeddedImageBrightness: null
+embeddedImageAlt: ''
+embeddedImagePosition: ''
 textBoxWidth: standard
 textBoxStyle: glass
 label: Short Stories
