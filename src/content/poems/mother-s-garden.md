@@ -1,11 +1,13 @@
 ---
 title: mother's garden
 category: smeared-clouds-splintered-teardrops
-image: ''
+image: /media/A14 global warming.jpg
+imageBrightness: 50
+textColor: '#d2bb79'
 music: ''
 tags: []
-featured: false
 draft: false
+featured: false
 ---
 
 the seeds are planted
