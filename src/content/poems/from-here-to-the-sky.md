@@ -2,10 +2,12 @@
 title: from here to the sky
 category: smeared-clouds-splintered-teardrops
 image: ''
-music: ''
+imageBrightness: null
+textColor: ''
+music: /media/img 1.jpg
 tags: []
-featured: false
 draft: false
+featured: false
 ---
 
 once there was peace from here to the sky
