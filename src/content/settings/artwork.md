@@ -1,7 +1,7 @@
 ---
 backgroundType: color
 backgroundColor: '#07110f'
-backgroundImage: /media/04.20.2023_162525.JPG
+backgroundImage: ''
 backgroundBrightness: null
 backgroundPosition: center
 embeddedImage: /media/_2 copies_.jpg
@@ -18,7 +18,7 @@ images:
   - image: /media/Untitled 3.jpg
     brightness: null
     alt: ''
-  - image: /media/04.16.2015_18165594_001.JPG
+  - image: /media/04.20.2023_162525.JPG
     brightness: null
     alt: ''
   - image: /media/_2 copies.jpg
