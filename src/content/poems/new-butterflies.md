@@ -1,11 +1,13 @@
 ---
 title: new butterflies
 category: dream-catcher
-image: ''
+image: /media/5x7 2.JPG
+imageBrightness: 75
+textColor: '#f7fb04'
 music: ''
 tags: []
-featured: true
 draft: false
+featured: true
 ---
 
 distant heartaches seem to 
