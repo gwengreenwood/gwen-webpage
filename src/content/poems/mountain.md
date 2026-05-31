@@ -1,11 +1,13 @@
 ---
 title: mountain
 category: world-of-no-peace
-image: ''
+image: /media/69 7.jpg
+imageBrightness: null
+textColor: ''
 music: ''
 tags: []
-featured: false
 draft: false
+featured: false
 ---
 
 on this mountain, the birds are crying
