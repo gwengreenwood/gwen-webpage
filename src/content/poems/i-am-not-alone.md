@@ -1,7 +1,7 @@
 ---
 title: i am not alone
 category: smeared-clouds-splintered-teardrops
-image: /media/dp 27.jpg
+image: /media/dp 11.jpg
 imageBrightness: null
 textColor: ''
 music: ''
