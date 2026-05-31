@@ -1,11 +1,13 @@
 ---
 title: jagged thought and memories
 category: smeared-clouds-splintered-teardrops
-image: ''
+image: /media/05.30.2021_19512904.JPG
+imageBrightness: null
+textColor: ''
 music: ''
 tags: []
-featured: false
 draft: false
+featured: false
 ---
 
 sand beneath my feet
