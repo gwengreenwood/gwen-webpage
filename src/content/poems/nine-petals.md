@@ -1,11 +1,13 @@
 ---
 title: nine petals
 category: smeared-clouds-splintered-teardrops
-image: ''
+image: /media/tree 5.JPG
+imageBrightness: null
+textColor: ''
 music: ''
 tags: []
-featured: false
 draft: false
+featured: false
 ---
 
 separating fine lines of blackness
