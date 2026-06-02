@@ -3,7 +3,7 @@ title: butterfly
 category: dream-catcher
 image: /media/5x7 3.jpg
 imageBrightness: null
-textColor: ''
+textColor: '#fbb1cb'
 music: ''
 tags: []
 draft: false
