@@ -1,11 +1,13 @@
 ---
 title: blue-grey
 category: smeared-clouds-splintered-teardrops
-image: ''
+image: /media/04.29.2022_13161370.JPEG
+imageBrightness: null
+textColor: ''
 music: ''
 tags: []
-featured: false
 draft: false
+featured: false
 ---
 
 the rain has yet to come
