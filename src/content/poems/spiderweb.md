@@ -1,10 +1,10 @@
 ---
 title: spiderweb
 category: hourglass-memories
-image: ''
+image: /media/IMG_E8024.JPG
 imageBrightness: null
 textColor: '#ffffff'
-music: /media/IMG_E8024.JPG
+music: ''
 tags: []
 draft: false
 featured: false
