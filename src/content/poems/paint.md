@@ -1,7 +1,7 @@
 ---
 title: paint
 category: hourglass-memories
-image: /media/dp 17.JPG
+image: /media/IMG_7850.JPG
 imageBrightness: null
 textColor: '#035359'
 music: ''
