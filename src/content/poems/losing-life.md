@@ -1,7 +1,9 @@
 ---
 title: losing life
 category: hourglass-memories
-image: ''
+image: /media/IMG_E7469.JPG
+imageBrightness: null
+textColor: '#ffffff'
 music: ''
 tags: []
 ---
