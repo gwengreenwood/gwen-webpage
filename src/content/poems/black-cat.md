@@ -1,11 +1,13 @@
 ---
 title: black cat
 category: hourglass-memories
-image: ''
+image: /media/IMG_E7848.JPG
+imageBrightness: null
+textColor: '#f3f2f2'
 music: ''
 tags: []
-featured: false
 draft: false
+featured: false
 ---
 
 why have you erased me from your mind
