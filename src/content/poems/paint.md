@@ -3,7 +3,7 @@ title: paint
 category: hourglass-memories
 image: /media/IMG_7850.JPG
 imageBrightness: null
-textColor: '#035359'
+textColor: '#e5e9f5'
 music: ''
 tags: []
 ---
