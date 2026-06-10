@@ -30,7 +30,7 @@ images:
   - image: /media/04.16.2015_18145076_001.JPG
     brightness: 100
     alt: ''
-  - image: /media/04.16.2015_18145076_001.JPG
+  - image: /media/02.17.2013_032.JPG
     brightness: 100
     alt: ''
   - image: /media/3_02 2.jpg
@@ -46,6 +46,9 @@ images:
     brightness: 100
     alt: ''
   - image: /media/4x6 5.JPG
+    brightness: 100
+    alt: ''
+  - image: /media/IMG_E8024.JPG
     brightness: 100
     alt: ''
 ---
