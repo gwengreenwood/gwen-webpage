@@ -1,7 +1,9 @@
 ---
 title: bitter or sweet
 category: hourglass-memories
-image: ''
+image: /media/IMG_7965.JPG
+imageBrightness: null
+textColor: '#ffffff'
 music: ''
 tags: []
 ---
