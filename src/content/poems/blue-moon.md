@@ -1,11 +1,13 @@
 ---
 title: blue moon
 category: nebula-orion
-image: ''
+image: /media/IMG_E7872.JPG
+imageBrightness: null
+textColor: ''
 music: ''
 tags: []
-featured: false
 draft: false
+featured: false
 ---
 
 staring into space
