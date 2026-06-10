@@ -3,7 +3,7 @@ title: dead roses, i pray
 category: hourglass-memories
 image: /media/508 4.jpg
 imageBrightness: null
-textColor: '#ff0000'
+textColor: '#ffffff'
 music: ''
 tags: []
 ---
