@@ -3,7 +3,7 @@ title: things
 category: hourglass-memories
 image: /media/IMG_E7926.JPG
 imageBrightness: null
-textColor: ''
+textColor: '#000000'
 music: ''
 tags: []
 ---
