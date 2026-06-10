@@ -1,7 +1,9 @@
 ---
 title: sewer
 category: world-of-no-peace
-image: ''
+image: /media/IMG_E8045.JPG
+imageBrightness: null
+textColor: '#ffffff'
 music: ''
 tags: []
 ---
