@@ -1,7 +1,9 @@
 ---
 title: aldebaran
 category: nebula-orion
-image: ''
+image: /media/06.23.2021_20510363.jpg
+imageBrightness: null
+textColor: '#1d1c21'
 music: ''
 tags: []
 ---
@@ -37,7 +39,7 @@ and galloping too,
 across sparkling waters
 
 in the eye of the bull…
- 
+
 a following taurus girl,
 
 not mystified,
