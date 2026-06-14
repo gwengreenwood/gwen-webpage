@@ -1,7 +1,9 @@
 ---
 title: stain
 category: world-of-no-peace
-image: ''
+image: /media/art 83.jpg
+imageBrightness: null
+textColor: ''
 music: ''
 tags: []
 ---
