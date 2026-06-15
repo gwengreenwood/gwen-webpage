@@ -1,7 +1,7 @@
 ---
 title: sorry
 category: world-of-no-peace
-image: /media/cemetary background.jpg
+image: ''
 imageBrightness: null
 textColor: ''
 music: ''
