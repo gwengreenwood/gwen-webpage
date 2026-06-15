@@ -2,8 +2,8 @@
 title: aldebaran
 category: nebula-orion
 image: /media/06.23.2021_20510363.jpg
-imageBrightness: null
-textColor: '#1d1c21'
+imageBrightness: 100
+textColor: '#f8f7fc'
 music: ''
 tags: []
 ---
