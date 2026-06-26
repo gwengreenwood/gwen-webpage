@@ -11,9 +11,9 @@ embeddedImagePosition: right
 textBoxWidth: wide
 textBoxStyle: glass
 label: ''
-heading: poetry, short fiction, and visual work
+heading: dark poet
 introText: |-
-  Gwenevere Ivy Greenwood is an American dark poet, writer, and artist. Her work blends dark poetry, psychological horror, and literary fiction, exploring grief, death, solitude, memory, and the darker aspects of the human experience through poetry, short fiction, and visual art.
+  Gwenevere Ivy Greenwood is an American dark poet, writer, and artist. Her work blends dark poetry, psychological horror, and literary fiction, exploring grief, death, solitude, memory, and the darker aspects of the human experience.
 
   Content Warning: This website contains fictional works and poetry that explore dark and potentially disturbing themes, including suicidal ideation, self-harm, grief, and death. Some readers may find the material distressing or offensive.
 bodyText: ''
