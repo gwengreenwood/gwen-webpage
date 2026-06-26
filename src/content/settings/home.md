@@ -13,7 +13,7 @@ textBoxStyle: glass
 label: ''
 heading: poetry, short fiction, and visual work
 introText: |-
-  Gwenevere Ivy Greenwood is an American writer and artist creating poems, short fiction, and visual work shaped by nature, tragedy, grief, and depression. She has autism and wants to spread awareness through her work. 
+  Gwenevere Ivy Greenwood is an American writer and artist creating poems, short fiction, and visual work shaped by nature, tragedy, and grief. She has autism and wants to spread awareness through her work. 
 
   Trigger warning: mention of suicidal ideation, and self-harm. Readers may also find some material offensive and/or disturbing.
 bodyText: ''
