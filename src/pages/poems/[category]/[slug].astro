@@ -6,7 +6,6 @@ import {
   getCategoryPath,
   getPoemPath,
 } from "../../../lib/poems";
-import { brightnessPercent, textColorValue } from "../../../lib/images";
 import { mediaPath, sitePath } from "../../../lib/paths";
 
 export function getStaticPaths() {
@@ -21,28 +20,23 @@ export function getStaticPaths() {
 const { category, poem } = Astro.props;
 const { previous, next } = getAdjacentPoems(poem.slug, category.slug);
 const Content = poem.Content;
-const readerStyle = [
-  `--reader-image: ${poem.image ? `url('${mediaPath(poem.image)}')` : "none"}`,
-  `--reader-bg-brightness: ${brightnessPercent(poem.imageBrightness)}`,
-  `--reader-text-color: ${textColorValue(poem.textColor)}`,
-].join("; ");
 ---
 
 <SiteLayout
-  title={`${poem.title} | Gwen`}
+  title={`${poem.title} | Gwenevere Ivy Greenwood`}
   description={`${poem.title} by Gwenevere Ivy Greenwood.`}
   bodyClass="reader-body"
 >
-  <article class="reader" style={readerStyle}>
+  <article class="reader">
     <div class="reader-shell">
       <header class="reader-title">
         <p class="meta">{category.title}</p>
         <h1>{poem.title}</h1>
         <div class="reader-nav">
-          <a class="button secondary" href={getCategoryPath(category)}>Category</a>
+          <a class="button secondary" href={getCategoryPath(category)}>Collection</a>
           <a class="button secondary" href={sitePath("/poems/")}>All poems</a>
-          {previous && <a class="button secondary" href={getPoemPath(previous)}>Newer</a>}
-          {next && <a class="button secondary" href={getPoemPath(next)}>Older</a>}
+          {previous && <a class="button secondary" href={getPoemPath(previous)}>Previous</a>}
+          {next && <a class="button secondary" href={getPoemPath(next)}>Next</a>}
         </div>
       </header>
 

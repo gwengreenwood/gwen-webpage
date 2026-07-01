@@ -20,23 +20,22 @@ The live site domain is:
 https://gwenevereivygreenwood.com/
 ```
 
+All content is edited directly in the code (Markdown files and Astro pages).
+There is no web admin / CMS.
+
 ## After Every Code Or Content Edit
 
-After changing the website, push it all the way through to GitHub unless the user clearly says not to.
+After changing the website, push it all the way through to GitHub unless the user
+clearly says not to.
 
-Before editing or pushing, first pull the newest live content from GitHub:
+Before editing or pushing, pull the newest version from GitHub first:
 
 ```powershell
 git status -sb
 git pull --rebase origin main
 ```
 
-This matters because the `/admin/` portal can create or edit poems, categories,
-images, and music directly on GitHub. Those admin changes may not exist on this
-computer yet. Pulling first prevents a future design push from accidentally
-overwriting newer admin content.
-
-Use this order:
+Use this order to publish:
 
 ```powershell
 npm run build
@@ -59,15 +58,14 @@ If `gh` is not on PATH, use:
 & 'C:\Program Files\GitHub CLI\gh.exe' run list --repo gwengreenwood/gwen-webpage --limit 3
 ```
 
-## Protect Admin-Made Content
+## Protect Content
 
-Treat these paths as user-owned content:
+Treat these paths as the user's own content:
 
 ```text
 src/content/poems/
 src/content/categories/
-public/media/images/
-public/media/music/
+public/media/
 ```
 
 Do not delete, replace, rename, or rewrite files in those folders during design
@@ -78,9 +76,8 @@ When changing design/code, prefer editing these areas instead:
 ```text
 src/pages/
 src/layouts/
+src/components/
 src/styles/
-src/lib/
-public/admin/config.yml
 astro.config.mjs
 .github/workflows/
 ```
@@ -92,18 +89,13 @@ git status -sb
 git diff --stat origin/main..HEAD
 ```
 
-If the diff includes poem, category, image, or music files that were not part of
-the user's request, stop and ask before pushing.
-
-If `git pull --rebase origin main` reports conflicts in admin-owned content, do
-not choose one side blindly. Stop and explain that live admin edits and local
-edits both changed the same content.
+If the diff includes poem, category, or image files that were not part of the
+user's request, stop and ask before pushing.
 
 ## Deployment Notes
 
-The `.github/workflows/deploy.yml` workflow deploys the site automatically every time `main` is pushed.
-
-The workflow builds with:
+The `.github/workflows/deploy.yml` workflow deploys the site automatically every
+time `main` is pushed. It builds with:
 
 ```text
 SITE_URL=https://gwenevereivygreenwood.com
@@ -118,52 +110,14 @@ If the workflow fails, read the failed log before guessing:
 gh run view --repo gwengreenwood/gwen-webpage --log-failed
 ```
 
-GitHub Pages has already been enabled for this repo using GitHub Actions.
-
-## Admin Notes
-
-The website admin lives at:
-
-```text
-/admin/
-```
-
-It uses Decap CMS. The admin config is:
-
-```text
-public/admin/config.yml
-```
-
-Poem categories are editable in admin. Category source files live in:
-
-```text
-src/content/categories/
-```
-
-Poem source files live in:
-
-```text
-src/content/poems/
-```
-
-Each poem must have a `category` field that matches a category file name without `.md`.
-
-Example:
-
-```yaml
-category: "weather-and-water"
-```
-
 ## Live Site Check
 
-After a successful deploy, open the live site and make sure it is styled, not just plain blue links on a black or white page.
-
-Check:
+After a successful deploy, open the live site and make sure it is styled:
 
 ```text
 https://gwenevereivygreenwood.com/
 https://gwenevereivygreenwood.com/poems/
-https://gwenevereivygreenwood.com/admin/
+https://gwenevereivygreenwood.com/photography/
 ```
 
 If DNS is not ready yet, the GitHub Pages deploy can still succeed before the

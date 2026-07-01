@@ -1,9 +1,10 @@
 ---
-import EditablePageIntro from "../components/EditablePageIntro.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { getPageSettings } from "../lib/settings";
+import { categories, getCategoryPath } from "../lib/poems";
+import { sitePath } from "../lib/paths";
 
-const homeSettings = await getPageSettings("home");
+const collections = categories.filter((category) => category.poems.length > 0);
+const pad = (index: number) => String(index + 1).padStart(2, "0");
 ---
 
 <SiteLayout
@@ -11,5 +12,53 @@ const homeSettings = await getPageSettings("home");
   description="The personal poetry, short fiction, and artwork website of Gwenevere Ivy Greenwood."
   bodyClass="home-body"
 >
-  <EditablePageIntro settings={homeSettings} titleId="about-title" className="home-page" />
+  <section class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Poetry · Short fiction · Visual work</p>
+      <h1>Dark poetry &amp; literature</h1>
+      <p class="lede">
+        Gwenevere Ivy Greenwood is an American writer and artist creating poems,
+        short fiction, and visual work shaped by nature, tragedy, grief, and
+        depression. She has autism and wants to spread awareness through her work.
+      </p>
+      <div class="actions">
+        <a class="btn" href={sitePath("/poems/")}>Read poetry</a>
+        <a class="btn-text" href={sitePath("/short-stories/")}>Short stories&nbsp;→</a>
+      </div>
+      <p class="note">
+        <span>Content warning</span>
+        This website contains fictional works and poetry that explore dark and
+        potentially disturbing themes, including suicidal ideation, self-harm,
+        grief, and death. Some readers may find the material distressing or
+        offensive.
+      </p>
+    </div>
+    <figure class="hero-img">
+      <img src={sitePath("/media/03.31.2013_005.jpg")} alt="A sunlit red door" />
+    </figure>
+  </section>
+
+  {
+    collections.length > 0 && (
+      <section class="index" aria-label="Collections">
+        <div class="index-head">
+          <h2>Collections</h2>
+          <span>
+            {collections.length} {collections.length === 1 ? "body" : "bodies"} of work
+          </span>
+        </div>
+        <ol class="collections">
+          {collections.map((category, index) => (
+            <li>
+              <a href={getCategoryPath(category)}>
+                <span class="num">{pad(index)}</span>
+                <span class="title">{category.title}</span>
+                <span class="go">View →</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </section>
+    )
+  }
 </SiteLayout>

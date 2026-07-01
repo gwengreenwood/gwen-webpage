@@ -1,23 +1,38 @@
 ---
-import EditablePageIntro from "../../components/EditablePageIntro.astro";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import { categories, getCategoryPath } from "../../lib/poems";
-import { getPageSettings } from "../../lib/settings";
 
-const poetrySettings = await getPageSettings("poetry");
-const poetryCollections = categories.filter((category) => category.poems.length > 0);
+const collections = categories.filter((category) => category.poems.length > 0);
+const pad = (index: number) => String(index + 1).padStart(2, "0");
 ---
 
-<SiteLayout title="Poetry | Gwen" description="Read Gwen's poems in place.">
-  <EditablePageIntro settings={poetrySettings} titleId="poetry-title" className="poetry-page">
-    <ul slot="copy-extra" class="category-link-list" aria-label="Poetry categories">
+<SiteLayout
+  title="Poetry | Gwenevere Ivy Greenwood"
+  description="Poems and collections by Gwenevere Ivy Greenwood."
+>
+  <section class="page-hero">
+    <h1>Poetry</h1>
+    <p>
+      Each collection gathers poems around a shared feeling. Open one to begin
+      reading.
+    </p>
+  </section>
+
+  <section class="index" aria-label="Collections">
+    <ol class="collections">
       {
-        poetryCollections.map((category) => (
+        collections.map((category, index) => (
           <li>
-            <a href={getCategoryPath(category)}>{category.title}</a>
+            <a href={getCategoryPath(category)}>
+              <span class="num">{pad(index)}</span>
+              <span class="title">{category.title}</span>
+              <span class="go">
+                {category.poems.length} {category.poems.length === 1 ? "poem" : "poems"} →
+              </span>
+            </a>
           </li>
         ))
       }
-    </ul>
-  </EditablePageIntro>
+    </ol>
+  </section>
 </SiteLayout>

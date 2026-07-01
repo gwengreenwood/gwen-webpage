@@ -1,11 +1,12 @@
-# Gwen Poetry Website
+# Gwenevere Ivy Greenwood
 
-A polished static poetry site built for GitHub Pages. Poems are Markdown files,
-images live in `public/media/images`, and music lives in `public/media/music`.
+A clean, static poetry and art site built with [Astro](https://astro.build) and
+hosted on GitHub Pages. Poems and collections are Markdown files; images live in
+`public/media`. All content is edited directly in the code (there is no web admin).
 
 ## Run it on your computer
 
-1. Install Node.js if it is not already installed.
+1. Install [Node.js](https://nodejs.org) if you don't have it.
 2. Open this folder in a terminal.
 3. Run:
 
@@ -16,109 +17,63 @@ npm run dev
 
 4. Open the local URL shown in the terminal.
 
-## Add a poem
-
-1. Put the image in `public/media/images`.
-2. Put the music file in `public/media/music`.
-3. Choose the category slug, such as `weather-and-water`.
-4. Copy `CONTENT_TEMPLATE.md`.
-5. Save the new poem as `src/content/poems/your-poem-title.md`.
-6. Change the title, date, category, summary, image, music, and poem text.
-
-The file name becomes the page URL. For example:
-
-```text
-src/content/poems/after-rain.md
-```
-
-inside a category becomes:
-
-```text
-/poems/weather-and-water/after-rain/
-```
-
-## Add or rename categories
-
-Category files live in `src/content/categories`.
-
-Each category has a name, description, optional image, and sort order. The admin
-screen can edit these. Poems point to categories with the category file slug.
-
-Example:
-
-```yaml
-category: "weather-and-water"
-```
-
-## Use the website admin
-
-This repo includes a real admin page at:
-
-```text
-/admin/
-```
-
-That admin page uses Decap CMS. It lets you log in from the website, then add or
-edit poems, images, and music with forms.
-
-The admin is already configured for:
-
-```yaml
-repo: gwengreenwood/gwen-webpage
-```
-
-After the site is published:
-
-1. Go to `https://your-domain.com/admin/`.
-2. Log in.
-3. Open the `Poems` section.
-4. Add or edit poems with the form.
-5. Click publish.
-
-Important plain-English note: GitHub Pages is static. That means it cannot store
-a private password or save poem files by itself. The admin screen is on your
-website, but it still needs permission to save changes back into the website
-repository in the background.
-
-## Keep admin edits safe
-
-When you add poems, categories, images, or music through `/admin/`, those changes
-are saved directly to GitHub.
-
-Before making design/code changes from this computer, pull the latest GitHub
-version first:
+To check the production build:
 
 ```bash
-git pull --rebase origin main
+npm run build
 ```
 
-That keeps new admin-added poems from being overwritten by an older copy on this
-computer.
+## Project layout
+
+```text
+src/pages/            The pages (home, poems, short-stories, artwork, photography)
+src/layouts/          The shared page shell (header, nav, footer)
+src/components/        Reusable pieces (e.g. the photo Lightbox)
+src/styles/global.css  The whole design system (colors, type, layout)
+src/content/poems/     One Markdown file per poem
+src/content/categories/ One Markdown file per collection
+public/media/          All images
+```
+
+## Add a poem
+
+1. Put any image for the poem in `public/media`.
+2. Create a file at `src/content/poems/your-poem-title.md`.
+3. Use this frontmatter (only `title` and `category` are required):
+
+```yaml
+---
+title: "Your Poem Title"
+category: "world-of-no-peace"
+# image: "/media/your-image.jpg"    # optional
+# music: "/media/your-song.mp3"     # optional
+# tags: ["memory", "evening"]       # optional
+---
+
+Write your poem here.
+
+Use a blank line between stanzas.
+To force a single line break, add two spaces at the end of a line.
+```
+
+The file name becomes the page URL. `after-rain.md` in the
+`world-of-no-peace` collection becomes `/poems/world-of-no-peace/after-rain/`.
+
+## Add or rename collections
+
+Collection files live in `src/content/categories`. Each has a `title` and an
+`order` (sort position). A poem joins a collection by matching its `category`
+to the collection file name (without `.md`).
 
 ## Publish to GitHub Pages
 
-1. Create a GitHub repository.
-2. Push this project to the `main` branch.
-3. In GitHub, open the repository settings.
-4. Go to **Pages**.
-5. Under **Build and deployment**, choose **GitHub Actions**.
-6. Push a change or run the `Deploy to GitHub Pages` action.
+Every push to `main` triggers `.github/workflows/deploy.yml`, which builds the
+site and deploys it automatically.
 
-After this is set up, every normal push to `main` from this computer will
-automatically rebuild and update the hosted website.
+## Custom domain
 
-## Use your own domain
-
-The site is set up for:
-
-```text
-gwenevereivygreenwood.com
-```
-
-The file `public/CNAME` tells GitHub Pages to use that domain.
-
-In your domain host's DNS settings, point the domain to GitHub Pages. For an
-apex/root domain like this, GitHub's current IPv4 `A` records are:
+`public/CNAME` points GitHub Pages at `gwenevereivygreenwood.com`. In the domain
+host's DNS, point the apex domain to GitHub Pages with these `A` records:
 
 ```text
 185.199.108.153
@@ -127,20 +82,4 @@ apex/root domain like this, GitHub's current IPv4 `A` records are:
 185.199.111.153
 ```
 
-You can also add these IPv6 `AAAA` records if your domain host supports them:
-
-```text
-2606:50c0:8000::153
-2606:50c0:8001::153
-2606:50c0:8002::153
-2606:50c0:8003::153
-```
-
-After DNS is pointed correctly, GitHub can issue the HTTPS certificate. That may
-take a little while.
-
-If you want the sitemap to use a different domain later, update the repository
-variable named `SITE_URL`.
-
-There is also a sample file at `public/CNAME.example`. When you know the real
-domain, rename it to `CNAME` and replace `your-domain.com` with your domain.
+To change the sitemap domain, update the repository variable `SITE_URL`.

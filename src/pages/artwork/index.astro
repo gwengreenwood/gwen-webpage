@@ -1,26 +1,42 @@
 ---
-import EditablePageIntro from "../../components/EditablePageIntro.astro";
 import SiteLayout from "../../layouts/SiteLayout.astro";
-import { brightnessPercent } from "../../lib/images";
-import { mediaPath } from "../../lib/paths";
-import { getPageSettings } from "../../lib/settings";
+import Lightbox from "../../components/Lightbox.astro";
+import { sitePath } from "../../lib/paths";
 
-const artworkSettings = await getPageSettings("artwork");
+// Artwork set, curated on the live site. Shown at original aspect ratio.
+const artworks = [
+  { src: "/media/Untitled 3.jpg", title: "" },
+  { src: "/media/A9 earth_s conception.jpg", title: "Earth's Conception" },
+  { src: "/media/_2 copies.jpg", title: "" },
+  { src: "/media/A1 in the arms of a forest.jpg", title: "In the Arms of Forrest" },
+  { src: "/media/A14 global warming.jpg", title: "Global Warming" },
+  { src: "/media/A2 oblivion.jpg", title: "Oblivion" },
+  { src: "/media/A8 genesis.jpg", title: "" },
+  { src: "/media/dp 15.jpg", title: "" },
+];
 ---
 
 <SiteLayout
-  title="Artwork | Gwen"
-  description="A developing visual archive for Gwen's photography, drawings, and mixed media artwork."
+  title="Artwork | Gwenevere Ivy Greenwood"
+  description="Paintings, drawings, and mixed-media work by Gwenevere Ivy Greenwood."
 >
-  <EditablePageIntro settings={artworkSettings} titleId="artwork-title" className="artwork-page">
-    <div class="artwork-strip" aria-label="Artwork preview images">
+  <section class="page-hero">
+    <h1>Artwork</h1>
+    <p>Paintings, drawings, and mixed-media pieces, shown in their original proportions.</p>
+  </section>
+
+  <section class="section media-section">
+    <div class="masonry" aria-label="Artwork">
       {
-        artworkSettings.images.map((item) => (
-          <figure style={`--image-brightness: ${brightnessPercent(item.brightness)}`}>
-            <img src={mediaPath(item.image)} alt={item.alt} loading="lazy" />
+        artworks.map((art) => (
+          <figure>
+            <img src={sitePath(art.src)} alt={art.title} loading="lazy" />
+            {art.title && <figcaption>{art.title}</figcaption>}
           </figure>
         ))
       }
     </div>
-  </EditablePageIntro>
+  </section>
+
+  <Lightbox />
 </SiteLayout>

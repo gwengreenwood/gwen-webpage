@@ -1,26 +1,22 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Ms+Madi&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap");
+/* =====================================================================
+   Gwenevere Ivy Greenwood — clean editorial design system
+   One source of truth for every page. Light, typography-led, spacious.
+   ===================================================================== */
 
 :root {
-  --ink: #07110f;
-  --ink-soft: #10201b;
-  --paper: #f5efe4;
-  --paper-soft: #ebe0cf;
-  --text: #fff7eb;
-  --text-muted: #d4c5ae;
-  --body: #2e2921;
-  --sage: #637b67;
-  --sage-dark: #182a24;
-  --olive: #7c8a5b;
-  --olive-light: #a3ad7b;
-  --olive-deep: #25321f;
-  --oxblood: #5b1216;
-  --gold: #c99a4a;
-  --line: rgba(245, 239, 228, 0.2);
-  --shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
-  --header-space: 9.4rem;
-  --script: "Ms Madi", "Segoe Script", "Lucida Handwriting", cursive;
-  --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-  --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --paper: #f6f2ec;
+  --paper-2: #ede7dd;
+  --ink: #1c1815;
+  --ink-soft: #5f584f;
+  --line: rgba(28, 24, 21, 0.14);
+  --line-soft: rgba(28, 24, 21, 0.08);
+  --accent: #8a3a2c;
+  --accent-hover: #71301f;
+  --shadow: 0 18px 50px rgba(28, 24, 21, 0.1);
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --edge: clamp(1.5rem, 5vw, 6rem);
+  --maxw: 82rem;
 }
 
 * {
@@ -28,21 +24,24 @@
 }
 
 html {
-  background: var(--ink);
-  color: var(--text);
+  background: var(--paper);
+  color: var(--ink);
   font-family: var(--sans);
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 body {
   margin: 0;
   min-width: 320px;
-  background: var(--ink);
-  letter-spacing: 0;
+  background: var(--paper);
+  color: var(--ink);
 }
 
-body.reader-body {
-  background: #020403;
+body.reader-body,
+body.home-body {
+  background: var(--paper);
 }
 
 img {
@@ -59,12 +58,11 @@ button,
 input,
 textarea {
   font: inherit;
-  letter-spacing: 0;
 }
 
 .skip-link {
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
   left: 1rem;
   padding: 0.75rem 1rem;
   position: absolute;
@@ -76,69 +74,60 @@ textarea {
   top: 1rem;
 }
 
+/* ---------------------------------------------------------------------
+   Top bar
+   --------------------------------------------------------------------- */
 .site-header {
-  align-items: center;
-  backdrop-filter: blur(18px);
-  background:
-    linear-gradient(180deg, rgba(7, 17, 15, 0.92), rgba(7, 17, 15, 0.72));
-  border-bottom: 1px solid rgba(163, 173, 123, 0.18);
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  justify-content: center;
-  left: 0;
-  padding: 0.9rem 4.5rem 1rem;
-  position: fixed;
-  right: 0;
+  position: sticky;
   top: 0;
   z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.15rem var(--edge);
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
 }
 
 .brand {
-  color: var(--olive-light);
-  font-family: var(--script);
-  font-size: clamp(2.6rem, 5vw, 4.65rem);
-  line-height: 1;
-  text-align: center;
-  text-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+  color: var(--ink);
 }
 
 .site-nav {
-  align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.7rem;
-  justify-content: center;
+  gap: 2rem;
 }
 
 .site-nav a {
-  background: rgba(245, 239, 228, 0.08);
-  border: 1px solid rgba(245, 239, 228, 0.16);
-  border-radius: 999px;
-  color: #efe6d6;
-  font-family: var(--serif);
-  font-size: 1.02rem;
-  line-height: 1;
-  padding: 0.55rem 1rem 0.6rem;
+  font-size: 0.86rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .site-nav a:hover,
 .site-nav a:focus-visible,
 .site-nav a.active {
-  background: rgba(124, 138, 91, 0.32);
-  border-color: rgba(163, 173, 123, 0.55);
-  color: var(--paper);
+  color: var(--ink);
+  border-color: var(--accent);
 }
 
+/* ---------------------------------------------------------------------
+   Footer
+   --------------------------------------------------------------------- */
 .site-footer {
-  align-items: center;
-  background: #050b09;
-  border-top: 1px solid rgba(245, 239, 228, 0.1);
-  color: var(--text-muted);
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
-  padding: 2rem 4.5rem;
+  border-top: 1px solid var(--line);
+  background: var(--paper-2);
+  padding: 2.5rem var(--edge);
 }
 
 .site-footer p {
@@ -146,135 +135,304 @@ textarea {
 }
 
 .site-footer p:first-child {
-  color: var(--olive-light);
-  font-family: var(--script);
-  font-size: 2.3rem;
+  font-family: var(--display);
+  font-size: 1.3rem;
+  color: var(--ink);
+}
+
+.site-footer p + p {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
 }
 
 .site-footer a {
-  color: var(--olive-light);
-  margin-left: 0.7rem;
+  color: var(--accent);
+  margin-left: 0.6rem;
+  border-bottom: 1px solid transparent;
 }
 
-.fixed-photo-page {
-  background-color: var(--ink);
-  background-image:
-    linear-gradient(90deg, rgba(4, 8, 7, 0.9), rgba(4, 8, 7, 0.58) 45%, rgba(4, 8, 7, 0.42)),
-    var(--page-image);
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-  min-height: 100svh;
-  padding: calc(var(--header-space) + 2.75rem) 4.5rem 5rem;
+.site-footer a:hover {
+  border-color: var(--accent);
 }
 
-.home-page {
-  min-height: 125svh;
-  padding-bottom: 18vh;
+/* ---------------------------------------------------------------------
+   Shared type helpers
+   --------------------------------------------------------------------- */
+.eyebrow,
+.quiet-label {
+  margin: 0 0 1.4rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-family: var(--sans);
 }
 
-.editable-page {
-  background-color: var(--page-bg, var(--ink));
-  isolation: isolate;
-  min-height: 100svh;
+.meta {
+  color: var(--accent);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.formatted-text {
+  white-space: pre-line;
+}
+
+/* ---------------------------------------------------------------------
+   Buttons
+   --------------------------------------------------------------------- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.92rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 2px;
+  border: 1px solid var(--accent);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.button.secondary {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+.button.secondary:hover,
+.button.secondary:focus-visible {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ---------------------------------------------------------------------
+   Home hero
+   --------------------------------------------------------------------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  padding: clamp(3.5rem, 8vw, 7rem) var(--edge) clamp(3rem, 6vw, 5.5rem);
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.8rem, 6.5vw, 5rem);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+}
+
+.lede {
+  margin: 1.75rem 0 0;
+  max-width: 34rem;
+  font-size: 1.08rem;
+  line-height: 1.75;
+  color: var(--ink-soft);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  margin-top: 2.25rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 2px;
+  transition: background 0.2s ease;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background: var(--accent-hover);
+}
+
+.btn-text {
+  font-size: 0.95rem;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 3px;
+  transition: border-color 0.2s ease;
+}
+
+.btn-text:hover,
+.btn-text:focus-visible {
+  border-color: var(--accent);
+}
+
+.note {
+  display: block;
+  margin: 3rem 0 0;
+  max-width: 32rem;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  padding-left: 1rem;
+  border-left: 2px solid var(--line);
+}
+
+.note span {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+}
+
+.hero-img {
+  margin: 0;
   overflow: hidden;
-  padding: calc(var(--header-space) + 2.75rem) 4.5rem 5rem;
-  position: relative;
+  border-radius: 3px;
 }
 
-.editable-page::before,
-.editable-page::after {
-  content: "";
-  inset: 0;
-  pointer-events: none;
-  position: absolute;
+.hero-img img {
+  width: 100%;
+  height: clamp(24rem, 46vw, 40rem);
+  object-fit: cover;
 }
 
-.editable-page::before {
-  background-image: var(--page-image);
-  background-attachment: fixed;
-  background-position: var(--page-bg-position, center);
-  background-size: cover;
-  filter: brightness(var(--page-bg-brightness, 100%));
-  z-index: -2;
+/* ---------------------------------------------------------------------
+   Collections index (home + poetry list)
+   --------------------------------------------------------------------- */
+.index {
+  border-top: 1px solid var(--line);
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(3rem, 6vw, 5rem) var(--edge) clamp(4rem, 8vw, 7rem);
 }
 
-.editable-page::after {
-  background:
-    linear-gradient(90deg, rgba(4, 8, 7, 0.74), rgba(4, 8, 7, 0.4) 48%, rgba(4, 8, 7, 0.18)),
-    linear-gradient(0deg, rgba(4, 8, 7, 0.42), rgba(4, 8, 7, 0.08));
-  z-index: -1;
+.index-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
-.editable-page.background-color {
-  background-image: none;
+.index-head h2 {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
 }
 
-.editable-page.background-color::before,
-.editable-page.background-color::after {
-  display: none;
+.index-head span {
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.collections {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.collections li {
+  border-top: 1px solid var(--line);
+}
+
+.collections a {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr auto;
+  align-items: baseline;
+  gap: 1.25rem;
+  padding: 1.5rem 0;
+  transition: padding-left 0.25s ease;
+}
+
+.collections a:hover {
+  padding-left: 0.75rem;
+}
+
+.collections .num {
+  font-size: 0.85rem;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+
+.collections .title {
+  font-family: var(--display);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.collections .go {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.collections a:hover .go {
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------------
+   Editable intro pages (poetry, short stories, artwork, photography,
+   gallery, publisher) — same editorial hero treatment
+   --------------------------------------------------------------------- */
+.editable-page {
+  background: var(--paper);
+  padding: clamp(3.5rem, 8vw, 6.5rem) var(--edge) clamp(3rem, 6vw, 5rem);
 }
 
 .editable-page-shell {
   margin: 0 auto;
-  max-width: 72rem;
+  max-width: var(--maxw);
 }
 
 .editable-page-panel {
-  background: transparent;
-  border: 0;
-  box-shadow: none;
   display: grid;
-  gap: 3rem;
-  grid-template-columns: minmax(0, 1.08fr) minmax(18rem, 0.72fr);
-  padding: clamp(1.5rem, 4vw, 3.5rem);
+  grid-template-columns: minmax(0, 1.1fr) minmax(16rem, 0.9fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
 }
 
 .editable-page.image-left .editable-page-panel {
-  grid-template-columns: minmax(18rem, 0.72fr) minmax(0, 1.08fr);
+  grid-template-columns: minmax(16rem, 0.9fr) minmax(0, 1.1fr);
+}
+
+.editable-page.image-left .embedded-frame {
+  order: -1;
 }
 
 .editable-page.image-none .editable-page-panel {
   display: block;
+  max-width: 46rem;
 }
 
-.editable-page.width-narrow .editable-page-panel {
-  max-width: 52rem;
+.editable-page.width-narrow .editable-page-shell {
+  max-width: 58rem;
 }
 
-.editable-page.width-standard .editable-page-panel {
-  max-width: 62rem;
-}
-
-.editable-page.width-wide .editable-page-panel {
-  max-width: 72rem;
-}
-
-.editable-page.panel-solid .editable-page-panel {
-  background: rgba(7, 17, 15, 0.28);
-}
-
-.editable-page.panel-paper .editable-page-panel {
-  background: rgba(245, 239, 228, 0.2);
-  color: var(--body);
-}
-
-.editable-page.panel-simple .editable-page-panel {
-  backdrop-filter: none;
-  background: transparent;
-  border-color: transparent;
-  box-shadow: none;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.editable-page.panel-paper .quiet-label,
-.editable-page.panel-paper .editable-page-copy h1 {
-  color: var(--oxblood);
-}
-
-.editable-page.panel-paper .editable-page-copy p {
-  color: var(--body);
+.editable-page.width-standard .editable-page-shell {
+  max-width: 70rem;
 }
 
 .editable-page-copy {
@@ -282,765 +440,222 @@ textarea {
 }
 
 .editable-page-copy h1 {
-  color: var(--paper);
-  font-family: var(--serif);
-  font-size: clamp(2.7rem, 6vw, 5.35rem);
-  font-weight: 400;
-  line-height: 0.98;
   margin: 0;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  color: var(--ink);
 }
 
 .editable-page-copy p {
-  color: #e1d5c3;
-  font-size: 1.11rem;
+  margin: 1.5rem 0 0;
+  max-width: 38rem;
+  font-size: 1.06rem;
   line-height: 1.75;
-  margin: 1.25rem 0 0;
-  max-width: 43rem;
-}
-
-.formatted-text {
-  white-space: pre-line;
-}
-
-.embedded-frame {
-  align-self: stretch;
-  border: 1px solid rgba(245, 239, 228, 0.22);
-  border-radius: 8px;
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.3);
-  margin: 0;
-  min-height: 24rem;
-  overflow: hidden;
-}
-
-.embedded-frame img {
-  filter: brightness(var(--image-brightness, 100%));
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
-}
-
-.home-scroll {
-  margin: 0 auto;
-  max-width: 72rem;
-}
-
-.about-panel {
-  backdrop-filter: blur(18px);
-  background:
-    linear-gradient(135deg, rgba(7, 17, 15, 0.86), rgba(24, 42, 36, 0.66)),
-    rgba(7, 17, 15, 0.74);
-  border: 1px solid rgba(245, 239, 228, 0.18);
-  border-radius: 8px;
-  box-shadow: var(--shadow);
-  display: grid;
-  gap: 3rem;
-  grid-template-columns: minmax(0, 1.08fr) minmax(18rem, 0.72fr);
-  padding: clamp(1.5rem, 4vw, 3.5rem);
-}
-
-.about-copy {
-  align-self: center;
-}
-
-.quiet-label {
-  color: var(--olive-light);
-  font-family: var(--serif);
-  font-size: 1rem;
-  letter-spacing: 0.08em;
-  margin: 0 0 1rem;
-  text-transform: uppercase;
-}
-
-.about-copy h1,
-.poetry-intro h1,
-.quiet-shell h1,
-.artwork-copy h1 {
-  color: var(--paper);
-  font-family: var(--serif);
-  font-size: clamp(2.7rem, 6vw, 5.35rem);
-  font-weight: 400;
-  line-height: 0.98;
-  margin: 0;
-}
-
-.about-copy p,
-.poetry-intro p,
-.quiet-shell p,
-.artwork-copy p {
-  color: #e1d5c3;
-  font-size: 1.11rem;
-  line-height: 1.75;
-  margin: 1.25rem 0 0;
-  max-width: 43rem;
+  color: var(--ink-soft);
 }
 
 .home-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.85rem;
-  margin-top: 2rem;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2.25rem;
 }
 
 .home-actions a {
-  border: 1px solid rgba(163, 173, 123, 0.45);
-  border-radius: 999px;
-  color: var(--paper);
-  font-family: var(--serif);
-  padding: 0.75rem 1.1rem;
+  font-size: 0.95rem;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 3px;
+  transition: border-color 0.2s ease;
 }
 
-.home-actions a:hover,
-.home-actions a:focus-visible {
-  background: rgba(124, 138, 91, 0.28);
+.home-actions a:first-child {
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+  padding: 0.85rem 1.6rem;
 }
 
-.portrait-frame {
-  align-self: stretch;
-  border: 1px solid rgba(245, 239, 228, 0.22);
-  border-radius: 8px;
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.3);
+.home-actions a:first-child:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.home-actions a:not(:first-child):hover {
+  border-color: var(--accent);
+}
+
+.embedded-frame {
   margin: 0;
-  min-height: 24rem;
   overflow: hidden;
+  border-radius: 3px;
 }
 
-.portrait-frame img {
-  height: 100%;
-  object-fit: cover;
+.embedded-frame img {
   width: 100%;
+  height: clamp(20rem, 40vw, 34rem);
+  object-fit: cover;
+  filter: brightness(var(--image-brightness, 100%));
 }
 
-.poetry-page {
-  background-image: none;
-}
-
-.poetry-shell,
-.quiet-shell,
-.artwork-shell {
-  margin: 0 auto;
-  max-width: 72rem;
-}
-
-.poetry-intro {
-  max-width: 50rem;
-}
-
-.collection-list {
-  display: grid;
-  gap: 1.35rem;
-  margin-top: 3rem;
-}
-
+/* Category link list (poetry index) */
 .category-link-list {
-  display: grid;
-  gap: 0.55rem;
   list-style: none;
-  margin: 2rem 0 0;
+  margin: 2.5rem 0 0;
   padding: 0;
 }
 
+.category-link-list li {
+  border-top: 1px solid var(--line);
+}
+
 .category-link-list a {
-  color: var(--paper);
-  font-family: var(--serif);
-  font-size: 1.35rem;
-  text-decoration: underline;
-  text-decoration-color: rgba(163, 173, 123, 0.52);
-  text-underline-offset: 0.2em;
+  display: block;
+  padding: 1.1rem 0;
+  font-family: var(--display);
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  color: var(--ink);
+  transition: padding-left 0.25s ease, color 0.2s ease;
 }
 
 .category-link-list a:hover,
 .category-link-list a:focus-visible {
-  color: var(--olive-light);
+  padding-left: 0.6rem;
+  color: var(--accent);
 }
 
-.poetry-collection {
-  backdrop-filter: blur(16px);
-  background: rgba(7, 17, 15, 0.75);
-  border: 1px solid rgba(245, 239, 228, 0.17);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.collection-heading {
-  border-bottom: 1px solid rgba(245, 239, 228, 0.14);
-  padding: 1.5rem 1.5rem 1.25rem;
-}
-
-.collection-heading h2 {
-  color: var(--paper);
-  font-family: var(--serif);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 400;
-  line-height: 1;
-  margin: 0;
-}
-
-.collection-heading p {
-  color: var(--text-muted);
-  line-height: 1.6;
-  margin: 0.75rem 0 0;
-  max-width: 44rem;
-}
-
-.poem-accordion {
-  display: grid;
-}
-
-.poem-disclosure {
-  border-bottom: 1px solid rgba(245, 239, 228, 0.12);
-}
-
-.poem-disclosure:last-child {
-  border-bottom: 0;
-}
-
-.poem-disclosure summary {
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
-  list-style: none;
-  padding: 1.1rem 1.5rem;
-}
-
-.poem-disclosure summary::-webkit-details-marker {
-  display: none;
-}
-
-.poem-disclosure summary strong {
-  color: var(--paper);
-  display: block;
-  font-family: var(--serif);
-  font-size: clamp(1.45rem, 3vw, 2rem);
-  font-weight: 400;
-}
-
-.poem-disclosure summary small {
-  color: var(--text-muted);
-  display: block;
-  margin-top: 0.2rem;
-}
-
-.summary-mark {
-  border: 1px solid rgba(163, 173, 123, 0.45);
-  border-radius: 999px;
-  color: var(--olive-light);
-  flex: 0 0 auto;
-  font-size: 0.9rem;
-  padding: 0.4rem 0.7rem;
-}
-
-.poem-disclosure[open] .open-label,
-.close-label {
-  display: none;
-}
-
-.poem-disclosure[open] .close-label {
-  display: inline;
-}
-
-.inline-poem {
-  background: rgba(245, 239, 228, 0.92);
-  color: #211c16;
-  padding: clamp(1.35rem, 3vw, 2.5rem);
-}
-
-.inline-poem .poem-summary {
-  border-bottom: 1px solid rgba(46, 41, 33, 0.18);
-  color: #5d231e;
-  font-family: var(--serif);
-  font-size: 1.25rem;
-  line-height: 1.55;
-  margin: 0 0 1.5rem;
-  padding-bottom: 1rem;
-}
-
-.inline-poem .poem-body {
-  font-size: clamp(1.2rem, 2.5vw, 1.45rem);
-}
-
-.quiet-page {
-  display: grid;
-  place-items: start center;
-}
-
-.quiet-shell {
-  backdrop-filter: blur(16px);
-  background: rgba(7, 17, 15, 0.74);
-  border: 1px solid rgba(245, 239, 228, 0.18);
-  border-radius: 8px;
-  box-shadow: var(--shadow);
-  max-width: 52rem;
-  padding: clamp(1.5rem, 4vw, 3.5rem);
-}
-
-.artwork-page {
-  background-image: none;
-}
-
-.artwork-shell {
-  display: grid;
-  gap: 2.5rem;
-}
-
-.artwork-copy {
-  max-width: 48rem;
-}
-
-.artwork-strip {
-  display: grid;
-  gap: 1.1rem;
-  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
-}
-
-.artwork-strip figure {
-  border: 1px solid rgba(245, 239, 228, 0.18);
-  border-radius: 8px;
-  margin: 0;
-  overflow: hidden;
-}
-
-.artwork-strip img {
-  aspect-ratio: 4 / 5;
-  filter: brightness(var(--image-brightness, 100%));
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
-}
-
-.hero {
-  background-image:
-    linear-gradient(90deg, rgba(7, 17, 15, 0.94) 0%, rgba(7, 17, 15, 0.74) 38%, rgba(7, 17, 15, 0.18) 74%),
-    var(--hero-image);
-  background-position: center;
-  background-size: cover;
-  min-height: 78vh;
-  padding: 9.5rem 4.5rem 4rem;
-}
-
-.hero-inner {
-  max-width: 44rem;
-}
-
-.hero h1,
-.page-hero h1,
-.reader-title h1 {
-  color: var(--paper);
-  font-family: var(--serif);
-  font-size: 4.7rem;
-  font-weight: 400;
-  line-height: 1.05;
-  margin: 0;
-}
-
-.hero p {
-  color: var(--text-muted);
-  font-size: 1.18rem;
-  line-height: 1.7;
-  margin: 1.4rem 0 2rem;
-  max-width: 34rem;
-}
-
-.cta-row {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.button {
-  align-items: center;
-  background: var(--oxblood);
-  border: 1px solid rgba(245, 239, 228, 0.16);
-  border-radius: 6px;
-  color: var(--paper);
-  display: inline-flex;
-  gap: 0.75rem;
-  min-height: 3rem;
-  padding: 0.8rem 1.15rem;
-}
-
-.button:hover,
-.button:focus-visible {
-  background: #6d171c;
-}
-
-.button.secondary {
-  background: rgba(245, 239, 228, 0.08);
-}
-
-.button.secondary:hover,
-.button.secondary:focus-visible {
-  background: rgba(245, 239, 228, 0.14);
-}
-
-.section {
-  padding: 4.5rem;
-}
-
-.section.dark {
-  background: var(--ink);
-}
-
-.section.paper {
-  background: var(--paper);
-  color: var(--body);
-}
-
-.section-header {
-  align-items: end;
-  display: flex;
-  gap: 2rem;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-}
-
-.section-header h2,
-.page-hero h1,
-.publisher-section h2 {
-  font-family: var(--serif);
-  font-weight: 400;
-}
-
-.section-header h2 {
-  color: var(--paper);
-  font-size: 2.2rem;
-  margin: 0;
-}
-
-.section.paper .section-header h2 {
-  color: var(--body);
-}
-
-.text-link {
-  color: var(--gold);
-  font-size: 0.95rem;
-}
-
-.poem-grid {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.category-grid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.category-card {
-  background: rgba(245, 239, 228, 0.055);
-  border: 1px solid rgba(245, 239, 228, 0.14);
-  border-radius: 8px;
-  display: grid;
-  gap: 1.2rem;
-  grid-template-columns: 13rem 1fr;
-  min-height: 13rem;
-  overflow: hidden;
-}
-
-.category-card img {
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
-}
-
-.category-card div {
-  align-self: center;
-  padding: 1.4rem 1.4rem 1.4rem 0;
-}
-
-.category-card h3 {
-  color: var(--paper);
-  font-family: var(--serif);
-  font-size: 1.9rem;
-  font-weight: 400;
-  margin: 0 0 0.8rem;
-}
-
-.category-card p {
-  color: var(--text-muted);
-  line-height: 1.6;
-  margin: 0;
-}
-
+/* ---------------------------------------------------------------------
+   Category page (a collection's poems)
+   --------------------------------------------------------------------- */
 .category-page {
-  background: var(--ink);
-  color: var(--category-text-color, var(--text));
-  isolation: isolate;
-  min-height: 100svh;
-  overflow: hidden;
-  position: relative;
+  background: var(--paper);
 }
 
-.category-page::before,
-.category-page::after {
-  content: "";
-  inset: 0;
-  pointer-events: none;
-  position: absolute;
+.page-hero,
+.category-hero {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(3.5rem, 8vw, 6rem) var(--edge) clamp(1.5rem, 3vw, 2.5rem);
 }
 
-.category-page::before {
-  background-image: var(--category-image);
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-  filter: brightness(var(--category-bg-brightness, 100%));
-  z-index: -2;
-}
-
-.category-page::after {
-  background:
-    linear-gradient(90deg, rgba(7, 17, 15, 0.74), rgba(7, 17, 15, 0.44) 52%, rgba(7, 17, 15, 0.2)),
-    linear-gradient(0deg, rgba(7, 17, 15, 0.44), rgba(7, 17, 15, 0.08));
-  z-index: -1;
-}
-
-.category-page > * {
-  position: relative;
-  z-index: 1;
-}
-
-.category-page .category-hero {
-  background: transparent;
-  position: relative;
-}
-
-.category-page .category-hero::before {
-  display: none;
-}
-
-.category-page .category-hero h1,
-.category-page .category-hero p {
-  color: var(--category-text-color, var(--paper));
-  position: relative;
-  z-index: 1;
-}
-
-.category-poems-section {
-  background: transparent;
-}
-
-.category-page .poem-card h3 {
-  color: var(--category-text-color, var(--paper));
-}
-
-.poem-card {
-  border-top: 1px solid var(--line);
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 10rem 1fr;
-  padding-top: 1.25rem;
-}
-
-.poem-card-no-image {
-  grid-template-columns: 1fr;
-}
-
-.poem-card.vertical {
-  border: 1px solid rgba(245, 239, 228, 0.18);
-  border-radius: 8px;
-  display: block;
-  overflow: hidden;
-  padding: 0;
-}
-
-.poem-card img {
-  aspect-ratio: 4 / 3;
-  border-radius: 6px;
-  filter: brightness(var(--image-brightness, 100%));
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
-}
-
-.poem-card.vertical img {
-  border-radius: 0;
-}
-
-.poem-card h3 {
-  color: var(--paper);
-  font-family: var(--serif);
-  font-size: 1.55rem;
+.category-hero h1,
+.page-hero h1 {
+  margin: 0;
+  font-family: var(--display);
   font-weight: 400;
-  margin: 0 0 0.5rem;
-}
-
-.poem-card p {
-  color: var(--text-muted);
-  line-height: 1.5;
-  margin: 0;
-}
-
-.poem-card .meta,
-.meta {
-  color: var(--gold);
-  font-size: 0.85rem;
-  margin-top: 1rem;
-}
-
-.poem-card.vertical .poem-card-body {
-  padding: 1.15rem;
-}
-
-.gallery-strip {
-  display: grid;
-  grid-template-columns: 1fr 1.15fr 1fr 1.15fr;
-}
-
-.gallery-strip a {
-  display: block;
-  min-height: 16rem;
-  overflow: hidden;
-}
-
-.gallery-strip img {
-  height: 100%;
-  object-fit: cover;
-  transition: transform 500ms ease;
-  width: 100%;
-}
-
-.gallery-strip a:hover img,
-.gallery-strip a:focus-visible img {
-  transform: scale(1.04);
-}
-
-.quote-band {
-  align-items: center;
-  display: grid;
-  gap: 3rem;
-  grid-template-columns: 1.5fr 1fr;
-}
-
-.quote-band blockquote {
-  border-left: 1px solid rgba(46, 41, 33, 0.18);
-  color: var(--oxblood);
-  font-family: var(--serif);
-  font-size: 2.2rem;
-  line-height: 1.25;
-  margin: 0;
-  padding-left: 2rem;
-}
-
-.quote-band p {
-  line-height: 1.7;
-  margin: 0 0 1.2rem;
-}
-
-.page-hero {
-  background: var(--sage-dark);
-  padding: 10rem 4.5rem 3.5rem;
+  font-size: clamp(2.5rem, 6vw, 4.4rem);
+  line-height: 1.03;
+  letter-spacing: -0.015em;
+  color: var(--ink);
 }
 
 .page-hero p {
-  color: var(--text-muted);
-  font-size: 1.08rem;
+  margin: 1.25rem 0 0;
+  max-width: 42rem;
+  font-size: 1.05rem;
   line-height: 1.7;
-  max-width: 44rem;
+  color: var(--ink-soft);
 }
 
-.poems-list {
-  background: var(--ink);
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  padding: 4.5rem;
+.section {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--edge);
 }
 
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1rem;
+.category-poems-section {
+  padding-bottom: clamp(4rem, 8vw, 7rem);
 }
 
-.tags span {
-  border: 1px solid rgba(245, 239, 228, 0.18);
-  border-radius: 999px;
-  color: var(--text-muted);
-  font-size: 0.8rem;
-  padding: 0.35rem 0.65rem;
+.poem-list {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
 }
 
+.poem-list li {
+  border-top: 1px solid var(--line);
+}
+
+.poem-list li:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.poem-list a {
+  display: block;
+  padding: 1.1rem 0;
+  font-family: var(--display);
+  font-size: clamp(1.3rem, 2.6vw, 1.8rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--ink);
+  transition: padding-left 0.25s ease, color 0.2s ease;
+}
+
+.poem-list a:hover,
+.poem-list a:focus-visible {
+  padding-left: 0.6rem;
+  color: var(--accent);
+}
+
+/* ---------------------------------------------------------------------
+   Poem reader — a quiet, centered reading room
+   --------------------------------------------------------------------- */
 .reader {
-  background: #020403;
-  color: var(--reader-text-color, #fff7eb);
-  isolation: isolate;
-  min-height: 100vh;
-  overflow: hidden;
-  padding: 8rem 4.5rem 3rem;
-  position: relative;
-}
-
-.reader::before,
-.reader::after {
-  content: "";
-  inset: 0;
-  pointer-events: none;
-  position: absolute;
-}
-
-.reader::before {
-  background-image: var(--reader-image);
-  background-position: center;
-  background-size: cover;
-  filter: brightness(var(--reader-bg-brightness, 100%));
-  z-index: -2;
-}
-
-.reader::after {
-  background:
-    linear-gradient(90deg, rgba(2, 4, 3, 0.72), rgba(2, 4, 3, 0.38) 50%, rgba(2, 4, 3, 0.16)),
-    linear-gradient(0deg, rgba(2, 4, 3, 0.42), rgba(2, 4, 3, 0));
-  z-index: -1;
+  background: var(--paper);
+  padding: clamp(3.5rem, 8vw, 6rem) var(--edge) clamp(4rem, 8vw, 6rem);
 }
 
 .reader-shell {
-  display: grid;
-  gap: 3rem;
-  grid-template-columns: minmax(0, 0.95fr) minmax(22rem, 0.65fr);
-  position: relative;
-  z-index: 1;
+  max-width: 44rem;
+  margin: 0 auto;
 }
 
-.reader-title {
-  align-self: end;
-  padding-bottom: 4rem;
+.reader-title .meta {
+  display: block;
 }
 
 .reader-title h1 {
-  color: var(--reader-text-color, #fff7eb);
+  margin: 0.75rem 0 0;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--ink);
 }
 
-.reader-title p {
-  color: color-mix(in srgb, var(--reader-text-color, #fff7eb) 78%, transparent);
-  font-size: 1.1rem;
-  line-height: 1.7;
-  max-width: 34rem;
+.reader-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.75rem;
+}
+
+.reader-nav .button {
+  font-size: 0.82rem;
+  padding: 0.55rem 1rem;
 }
 
 .reader-panel {
-  background: transparent;
-  border: 0;
-  box-shadow: none;
-  color: var(--reader-text-color, #fff7eb);
-  max-height: 74vh;
-  overflow: auto;
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.48);
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  border-top: 1px solid var(--line);
 }
 
 .reader-panel-inner {
-  padding: 2rem;
+  padding-top: clamp(2rem, 5vw, 3rem);
 }
 
 .poem-body {
-  font-family: var(--serif);
-  font-size: 1.35rem;
-  line-height: 1.8;
+  font-family: var(--display);
+  font-size: clamp(1.2rem, 2.6vw, 1.45rem);
+  line-height: 1.85;
+  color: var(--ink);
   white-space: pre-line;
 }
 
@@ -1049,70 +664,94 @@ textarea {
 }
 
 .audio-dock {
-  border-top: 1px solid rgba(245, 239, 228, 0.24);
-  padding: 1rem 2rem 1.5rem;
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1.5rem;
 }
 
 .audio-dock audio {
   width: 100%;
 }
 
-.reader-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  margin-top: 1.5rem;
+/* ---------------------------------------------------------------------
+   Media pages (artwork + photography) — masonry, original aspect ratios
+   --------------------------------------------------------------------- */
+.media-section {
+  padding-bottom: clamp(4rem, 8vw, 7rem);
 }
 
-.gallery-grid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  padding: 2.5rem 0 0;
+.masonry {
+  column-count: 3;
+  column-gap: 1.25rem;
+  margin-top: 3rem;
 }
 
-.gallery-item {
-  background: transparent;
-  border-radius: 8px;
+.masonry figure {
+  break-inside: avoid;
+  margin: 0 0 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 3px;
   overflow: hidden;
+  background: var(--paper);
+  transition: border-color 0.2s ease;
 }
 
-.gallery-item img {
-  aspect-ratio: 4 / 3;
-  border: 1px solid rgba(245, 239, 228, 0.18);
-  filter: brightness(var(--image-brightness, 100%));
-  object-fit: cover;
+.masonry figure:hover {
+  border-color: var(--accent);
+}
+
+.masonry img {
+  display: block;
   width: 100%;
+  height: auto;
 }
 
-.gallery-item p {
-  color: var(--text-muted);
-  margin: 0;
-  padding: 1rem;
+.masonry figcaption {
+  padding: 0.7rem 0.9rem 0.85rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--ink-soft);
 }
 
+@media (max-width: 900px) {
+  .masonry {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 560px) {
+  .masonry {
+    column-count: 1;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Publisher / admin help
+   --------------------------------------------------------------------- */
 .publisher-layout {
-  color: var(--body);
   display: grid;
-  gap: 2rem;
+  gap: 2.5rem;
   grid-template-columns: 1fr 1fr;
-  padding: 2.5rem 0 0;
+  margin-top: 3rem;
 }
 
 .publisher-section {
-  border-top: 1px solid rgba(46, 41, 33, 0.2);
+  border-top: 1px solid var(--line);
   padding-top: 1.5rem;
 }
 
 .publisher-section h2 {
-  color: var(--oxblood);
-  font-size: 2rem;
   margin: 0 0 1rem;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 1.7rem;
+  color: var(--ink);
 }
 
 .publisher-section p,
 .publisher-section li {
   line-height: 1.7;
+  color: var(--ink-soft);
 }
 
 .publisher-section p {
@@ -1120,15 +759,16 @@ textarea {
 }
 
 .publisher-section code {
-  background: rgba(46, 41, 33, 0.08);
+  background: var(--paper-2);
   border-radius: 4px;
-  padding: 0.12rem 0.28rem;
+  padding: 0.12rem 0.32rem;
+  font-size: 0.9em;
 }
 
 .template-box {
-  background: #1c1713;
-  border-radius: 8px;
-  color: #f8efe1;
+  background: #211c18;
+  border-radius: 6px;
+  color: #f3ece1;
   overflow: auto;
   padding: 1.25rem;
 }
@@ -1138,150 +778,54 @@ textarea {
   white-space: pre-wrap;
 }
 
-@media (max-width: 1000px) {
-  .site-header,
-  .section,
-  .poems-list,
-  .gallery-grid,
-  .publisher-layout,
-  .page-hero,
-  .editable-page,
-  .fixed-photo-page,
-  .reader,
-  .site-footer {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-
-  .hero {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-
-  .hero h1,
-  .page-hero h1,
-  .reader-title h1 {
-    font-size: 3.5rem;
-  }
-
-  .poem-grid,
-  .category-grid,
-  .poems-list,
-  .gallery-grid,
-  .publisher-layout,
-  .reader-shell,
-  .quote-band,
-  .editable-page-panel,
-  .about-panel,
-  .artwork-strip {
+/* ---------------------------------------------------------------------
+   Responsive
+   --------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .hero,
+  .editable-page-panel {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
 
-  .reader-title {
-    padding-bottom: 0;
+  .hero-img,
+  .editable-page .embedded-frame {
+    order: -1;
   }
 
-  .reader-panel {
-    max-height: none;
+  .hero-img img,
+  .embedded-frame img {
+    height: clamp(16rem, 55vw, 24rem);
+  }
+
+  .publisher-layout {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
   }
 }
 
-@media (max-width: 680px) {
-  :root {
-    --header-space: 10.9rem;
-  }
-
+@media (max-width: 560px) {
   .site-header {
-    align-items: center;
-    gap: 0.8rem;
-    padding-top: 0.8rem;
-  }
-
-  .brand {
-    font-size: 2.4rem;
-    max-width: 20rem;
-    text-wrap: balance;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.9rem;
   }
 
   .site-nav {
-    gap: 0.45rem;
+    gap: 1.1rem 1.25rem;
+  }
+
+  .collections a {
+    grid-template-columns: 2.5rem 1fr;
+  }
+
+  .collections .go {
+    display: none;
+  }
+
+  .reader-nav .button {
+    flex: 1 1 auto;
     justify-content: center;
-  }
-
-  .site-nav a {
-    font-size: 0.92rem;
-    padding: 0.48rem 0.68rem 0.52rem;
-  }
-
-  .hero {
-    min-height: 80vh;
-    padding-top: 10rem;
-  }
-
-  .fixed-photo-page {
-    padding-bottom: 3rem;
-    padding-top: calc(var(--header-space) + 1.5rem);
-  }
-
-  .editable-page {
-    padding-bottom: 3rem;
-    padding-top: calc(var(--header-space) + 1.5rem);
-  }
-
-  .about-panel,
-  .editable-page-panel,
-  .quiet-shell {
-    padding: 1.25rem;
-  }
-
-  .portrait-frame {
-    min-height: 18rem;
-  }
-
-  .embedded-frame {
-    min-height: 18rem;
-  }
-
-  .hero h1,
-  .page-hero h1,
-  .reader-title h1 {
-    font-size: 2.65rem;
-  }
-
-  .poem-disclosure summary {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .poem-card {
-    grid-template-columns: 1fr;
-  }
-
-  .category-card {
-    grid-template-columns: 1fr;
-  }
-
-  .category-card img {
-    aspect-ratio: 4 / 3;
-    height: auto;
-  }
-
-  .category-card div {
-    padding: 1.2rem;
-  }
-
-  .gallery-strip {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .quote-band blockquote {
-    font-size: 1.7rem;
-    padding-left: 1.2rem;
-  }
-
-  .site-footer {
-    align-items: flex-start;
-    flex-direction: column;
   }
 }
 

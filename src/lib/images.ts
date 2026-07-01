@@ -4,11 +4,3 @@ export function brightnessPercent(value: unknown, fallback = 100): string {
 
   return `${clampedValue}%`;
 }
-
-export function textColorValue(value: unknown, fallback = "#fff7eb"): string {
-  if (typeof value === "string" && /^#[0-9a-fA-F]{3,8}$/.test(value)) {
-    return value;
-  }
-
-  return fallback;
-}

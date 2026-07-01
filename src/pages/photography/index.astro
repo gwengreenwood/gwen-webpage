@@ -1,30 +1,45 @@
 ---
-import EditablePageIntro from "../../components/EditablePageIntro.astro";
 import SiteLayout from "../../layouts/SiteLayout.astro";
-import { brightnessPercent } from "../../lib/images";
-import { mediaPath } from "../../lib/paths";
-import { getPageSettings } from "../../lib/settings";
+import Lightbox from "../../components/Lightbox.astro";
+import { sitePath } from "../../lib/paths";
 
-const photographySettings = await getPageSettings("photography");
+// Photography set, curated on the live site. Shown at original aspect ratio.
+const photos = [
+  "/media/04.16.2015_18214068_001.JPG",
+  "/media/04.16.2015_18165594_001.JPG",
+  "/media/4 best.JPG",
+  "/media/02.26.2021_17394474.jpg",
+  "/media/04.16.2015_18145076_001.JPG",
+  "/media/02.17.2013_032.JPG",
+  "/media/3_02 2.jpg",
+  "/media/4x6 4.JPG",
+  "/media/05.30.2021_19512904.JPG",
+  "/media/4x6 6.JPG",
+  "/media/4x6 5.JPG",
+  "/media/IMG_E8024.JPG",
+];
 ---
 
 <SiteLayout
-  title="Photography | Gwen"
-  description="A developing photography archive by Gwenevere Ivy Greenwood."
+  title="Photography | Gwenevere Ivy Greenwood"
+  description="A photography archive by Gwenevere Ivy Greenwood."
 >
-  <EditablePageIntro
-    settings={photographySettings}
-    titleId="photography-title"
-    className="artwork-page photography-page"
-  >
-    <div class="artwork-strip" aria-label="Photography preview images">
+  <section class="page-hero">
+    <h1>Photography</h1>
+    <p>A gathering of photographs, shown in their original proportions.</p>
+  </section>
+
+  <section class="section media-section">
+    <div class="masonry" aria-label="Photography">
       {
-        photographySettings.images.map((item) => (
-          <figure style={`--image-brightness: ${brightnessPercent(item.brightness)}`}>
-            <img src={mediaPath(item.image)} alt={item.alt} loading="lazy" />
+        photos.map((src) => (
+          <figure>
+            <img src={sitePath(src)} alt="" loading="lazy" />
           </figure>
         ))
       }
     </div>
-  </EditablePageIntro>
+  </section>
+
+  <Lightbox />
 </SiteLayout>
