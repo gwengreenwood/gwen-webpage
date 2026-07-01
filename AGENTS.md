@@ -17,7 +17,7 @@ https://github.com/gwengreenwood/gwen-webpage
 The live site domain is:
 
 ```text
-https://gwenevereivygreenwood.com/
+https://gweneveregreenwood.com/
 ```
 
 All content is edited directly in the code (Markdown files and Astro pages).
@@ -98,7 +98,7 @@ The `.github/workflows/deploy.yml` workflow deploys the site automatically every
 time `main` is pushed. It builds with:
 
 ```text
-SITE_URL=https://gwenevereivygreenwood.com
+SITE_URL=https://gweneveregreenwood.com
 SITE_BASE=/
 ```
 
@@ -115,9 +115,9 @@ gh run view --repo gwengreenwood/gwen-webpage --log-failed
 After a successful deploy, open the live site and make sure it is styled:
 
 ```text
-https://gwenevereivygreenwood.com/
-https://gwenevereivygreenwood.com/poems/
-https://gwenevereivygreenwood.com/photography/
+https://gweneveregreenwood.com/
+https://gweneveregreenwood.com/poems/
+https://gweneveregreenwood.com/photography/
 ```
 
 If DNS is not ready yet, the GitHub Pages deploy can still succeed before the

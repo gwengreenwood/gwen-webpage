@@ -72,7 +72,7 @@ site and deploys it automatically.
 
 ## Custom domain
 
-`public/CNAME` points GitHub Pages at `gwenevereivygreenwood.com`. In the domain
+`public/CNAME` points GitHub Pages at `gweneveregreenwood.com`. In the domain
 host's DNS, point the apex domain to GitHub Pages with these `A` records:
 
 ```text
